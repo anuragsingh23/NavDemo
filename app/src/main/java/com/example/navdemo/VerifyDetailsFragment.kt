@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.fragment.navArgs
 
 
 class VerifyDetailsFragment : Fragment() {
@@ -22,8 +23,14 @@ class VerifyDetailsFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
 
-        val name =arguments?.getString("name")
-        val mobilenumber=arguments?.getLong("mobile")
+       // val name =arguments?.getString("name")
+       // val mobilenumber=arguments?.getLong("mobile")
+
+        val args:VerifyDetailsFragmentArgs by navArgs()
+
+
+        val name=args.name
+        val mobilenumber=args.mobile
 
 
         val rootView=inflater.inflate(R.layout.fragment_verify_details, container, false)
@@ -33,6 +40,8 @@ class VerifyDetailsFragment : Fragment() {
 
         tvName.text=name
         tvMobileNumber.text=mobilenumber.toString()
+
+
 
 
         return rootView

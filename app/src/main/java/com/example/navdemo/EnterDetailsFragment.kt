@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 
 
 class EnterDetailsFragment : Fragment() {
@@ -33,8 +35,11 @@ class EnterDetailsFragment : Fragment() {
         val btnVerifyDetails=rootView.findViewById<Button>(R.id.btn_verify_details)
         btnVerifyDetails.setOnClickListener{
 
-            val firstName=etName.text.toString()
-            val mobile=etMobileNumber.text.toString()
+           val firstName=etName.text.toString()
+           val mobile=etMobileNumber.text.toString()
+
+
+
 
             when{
                 firstName.isEmpty()->{
@@ -44,6 +49,12 @@ class EnterDetailsFragment : Fragment() {
                     Toast.makeText(activity,"Enter Mobile Number",Toast.LENGTH_SHORT).show()
                 }
                 else ->{
+                    findNavController()
+                        .navigate(EnterDetailsFragmentDirections.actionEnterDetailsFragmentToVerifyDetailsFragment(
+                            firstName,
+                            mobile.toLong()
+
+                        ))
 
 
                 }
